@@ -604,6 +604,16 @@
     border-color: var(--accent);
   }
 
+  .kontakt-details {
+    margin-top: 48px;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    color: var(--fg-dim);
+    font-weight: 300;
+    line-height: 1.8;
+    text-align: center;
+  }
+
   .kontakt-city {
     margin-top: 80px;
     font-size: 10px;
@@ -702,6 +712,15 @@
     transition: color 0.2s, border-color 0.2s;
   }
   .lang-btn:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* ── FILM INFO BELOW POSTER ── */
+  .film-card-info--below {
+    position: static;
+    padding: 24px 0 0;
+    max-width: 420px;
+  }
+  .film-card-info--below .film-year { margin-bottom: 8px; }
+  .film-card-info--below .film-title { margin-bottom: 8px; }
 
   /* ── POSTER CARD ── */
   .film-card--poster {
@@ -929,15 +948,13 @@
     <!-- Film 1 — Dymkowski -->
     <!-- Gdy film będzie na YouTube: dodaj onclick="openYT('dymkowski')" do divu poniżej -->
     <div class="film-card film-card--poster">
-
       <img src="uploads/dymkowski-poster.jpg" alt="Dymkowski. Najważniejszy mecz — plakat" class="film-poster-img">
-
       <div class="film-card-overlay"></div>
-      <div class="film-card-info">
-        <div class="film-year" data-en="2026 — Dir. T. Chaciński · DoP. P. Sawiński">2026 — Reż. T. Chaciński · Zdj. P. Sawiński</div>
-        <div class="film-title" data-en="Dymkowski.<br>The Most Important Match">Dymkowski.<br>Najważniejszy mecz</div>
-        <div class="film-desc" data-en="A documentary about Robert Dymkowski, the legendary Pogoń Szczecin striker battling ALS. Premiere: 17 May 2026, Polish Theatre in Szczecin.">Dokument o Robercie Dymkowskim, legendarnym napastniku Pogoni Szczecin, zmagającym się z ALS. Premiera: 17 maja 2026, Teatr Polski w Szczecinie.</div>
-      </div>
+    </div>
+    <div class="film-card-info film-card-info--below">
+      <div class="film-year" data-en="2026 — Dir. T. Chaciński · DoP. P. Sawiński">2026 — Reż. T. Chaciński · Zdj. P. Sawiński</div>
+      <div class="film-title" data-en="Dymkowski.<br>The Most Important Match">Dymkowski.<br>Najważniejszy mecz</div>
+      <div class="film-desc" data-en="A documentary about Robert Dymkowski, the legendary Pogoń Szczecin striker battling ALS. Premiere: 17 May 2026, Polish Theatre in Szczecin.">Dokument o Robercie Dymkowskim, legendarnym napastniku Pogoni Szczecin, zmagającym się z ALS. Premiera: 17 maja 2026, Teatr Polski w Szczecinie.</div>
     </div>
 
   </div>
@@ -994,7 +1011,13 @@
   <a href="mailto:kontakt@hsconcept.pl" class="kontakt-email reveal" style="transition-delay:0.2s">
     kontakt@hsconcept.pl
   </a>
-  <div class="kontakt-city reveal" style="transition-delay:0.35s">Szczecin</div>
+  <div class="kontakt-details reveal" style="transition-delay:0.4s">
+    <div data-en="Mailing address:">Adres do korespondencji:</div>
+    <div>al. Wojska Polskiego 40/U3<br>70-475 Szczecin, Polska</div>
+    <div style="margin-top:12px">
+      <a href="tel:+48914868849" class="kontakt-email" data-en="Tel. +48 91 48 688 49">Tel. +48 91 48 688 49</a>
+    </div>
+  </div>
 </section>
 
 <!-- FOOTER -->
