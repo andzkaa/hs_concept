@@ -57,25 +57,30 @@
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 48px;
-    mix-blend-mode: normal;
     transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), background 0.3s;
   }
   nav.hidden { transform: translateY(-100%); }
   nav.scrolled { background: rgba(10,10,10,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--fg-muted); }
 
-  .nav-logo {
-    font-family: var(--sans);
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    color: var(--fg);
-    text-decoration: none;
+  .nav-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 48px;
   }
-  .nav-logo span { color: var(--accent); }
+
+  .nav-logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+  .nav-logo-img {
+    height: 30px;
+    width: auto;
+    filter: brightness(0) invert(1);
+  }
 
   .nav-links {
     display: flex;
@@ -770,14 +775,18 @@
 
 <!-- NAV -->
 <nav id="main-nav">
-  <a href="#hero" class="nav-logo">HS <span>·</span> CONCEPT</a>
-  <ul class="nav-links">
-    <li><a href="#onas" data-section="onas" data-en="01 / About us">01 / O nas</a></li>
-    <li><a href="#corobimy" data-section="corobimy" data-en="02 / What we do">02 / Co robimy</a></li>
-    <li><a href="#realizacje" data-section="realizacje" data-en="03 / Our work">03 / Realizacje</a></li>
-    <li><a href="#kontakt" data-section="kontakt" data-en="04 / Contact">04 / Kontakt</a></li>
-  </ul>
-  <button class="lang-btn" id="lang-btn" onclick="toggleLang()">EN</button>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">
+      <img src="uploads/hs-concept-logo.png" alt="HS Concept" class="nav-logo-img">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#onas" data-section="onas" data-en="01 / About us">01 / O nas</a></li>
+      <li><a href="#corobimy" data-section="corobimy" data-en="02 / What we do">02 / Co robimy</a></li>
+      <li><a href="#realizacje" data-section="realizacje" data-en="03 / Our work">03 / Realizacje</a></li>
+      <li><a href="#kontakt" data-section="kontakt" data-en="04 / Contact">04 / Kontakt</a></li>
+    </ul>
+    <button class="lang-btn" id="lang-btn" onclick="toggleLang()">EN</button>
+  </div>
 </nav>
 
 <!-- 01 HERO -->
