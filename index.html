@@ -683,6 +683,13 @@
   }
   .tweak-select:focus, .tweak-input:focus { outline: 1px solid var(--accent); }
 
+  /* ── WRAPPER ── */
+  .site-wrapper {
+    max-width: 1300px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
     nav { padding: 16px 24px; }
@@ -730,6 +737,7 @@
 </template>
 </head>
 <body>
+<div class="site-wrapper">
 
 <!-- NAV -->
 <nav id="main-nav">
@@ -953,6 +961,8 @@
   <div class="footer-text">HS Concept &nbsp;·&nbsp; Est. 2000 &nbsp;·&nbsp; © 2026</div>
   <div class="footer-text" style="color:rgba(245,241,232,0.12)">Szczecin, Polska</div>
 </footer>
+
+</div><!-- /.site-wrapper -->
 
 <!-- TWEAKS -->
 <div id="tweaks-panel">
