@@ -79,7 +79,6 @@
   .nav-logo-img {
     height: 28px;
     width: auto;
-    filter: invert(1) hue-rotate(180deg);
   }
 
   .nav-links {
@@ -742,40 +741,105 @@
     margin: 0 auto;
   }
 
+  /* ── HAMBURGER ── */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--fg-dim);
+    transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), opacity 0.3s;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
-    nav { padding: 16px 24px; }
-    .nav-links { gap: 20px; }
-    .nav-links a { font-size: 10px; }
+    .nav-inner { padding: 14px 20px; }
+    .nav-hamburger { display: flex; }
 
-    #hero { padding: 80px 24px 56px; }
-    .hero-badge { right: 24px; top: 90px; }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      gap: 0;
+      background: rgba(10,10,10,0.97);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--fg-muted);
+      padding: 8px 0 12px;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li { width: 100%; }
+    .nav-links a { display: block; padding: 12px 20px; font-size: 11px; letter-spacing: 0.14em; }
 
-    #onas, #corobimy, #realizacje { padding: 100px 24px; }
-    #kontakt { padding: 100px 24px; }
-    footer { padding: 24px; flex-direction: column; gap: 8px; }
+    #hero { padding: 80px 20px 48px; }
+    .hero-badge { right: 20px; top: 80px; font-size: 9px; }
+    .hero-headline { font-size: clamp(40px, 11vw, 80px); margin-bottom: 32px; }
+    .hero-sub { margin-bottom: 40px; font-size: 13px; }
+    .hero-line { left: 20px; }
+
+    #onas, #corobimy, #realizacje { padding: 80px 20px; }
+    #kontakt { padding: 80px 20px; min-height: auto; }
+    footer { padding: 20px; flex-direction: column; gap: 8px; text-align: center; }
+
+    .section-header { margin-bottom: 48px; gap: 16px; }
 
     .person-row, .person-row.reverse {
       grid-template-columns: 1fr;
       min-height: auto;
     }
     .person-row .person-num,
-    .person-row.reverse .person-num { order: 1; writing-mode: horizontal-tb; padding: 24px 24px 0; font-size: 48px; opacity: 0.15; }
+    .person-row.reverse .person-num { order: 1; writing-mode: horizontal-tb; padding: 20px 20px 0; font-size: 40px; opacity: 0.15; }
     .person-row .person-photo,
-    .person-row.reverse .person-photo { order: 2; min-height: 260px; height: 260px; }
+    .person-row.reverse .person-photo { order: 2; min-height: 240px; height: 240px; }
     .person-row .person-photo::after,
     .person-row.reverse .person-photo::after { background: linear-gradient(to top, var(--bg) 0%, transparent 60%); }
     .person-row .person-content,
-    .person-row.reverse .person-content { order: 3; padding: 24px; }
+    .person-row.reverse .person-content { order: 3; padding: 20px; }
+    .person-bio { max-width: 100%; }
 
-    .service-item { grid-template-columns: 48px 1fr; }
+    .service-item { grid-template-columns: 40px 1fr; gap: 16px; padding: 28px 0; }
     .service-arrow { display: none; }
 
-    .films-grid { grid-template-columns: 1fr; }
+    .films-grid { max-width: 100%; }
+    .film-card--poster { max-width: 100%; }
 
     .clients-grid { columns: 1; }
+    .client-name { white-space: normal; font-size: clamp(18px, 4.5vw, 28px); }
+
+    .kontakt-headline { font-size: clamp(32px, 8vw, 64px); margin-bottom: 36px; }
 
     #tweaks-panel { bottom: 16px; right: 16px; width: 200px; }
+  }
+
+  @media (max-width: 480px) {
+    .nav-inner { padding: 12px 16px; }
+
+    #hero { padding: 70px 16px 40px; }
+    .hero-badge { display: none; }
+    .hero-section-label { margin-bottom: 24px; }
+
+    #onas, #corobimy, #realizacje { padding: 60px 16px; }
+    #kontakt { padding: 60px 16px; }
+    footer { padding: 16px; }
+
+    .person-row .person-photo,
+    .person-row.reverse .person-photo { min-height: 200px; height: 200px; }
+
+    .film-card-info { padding: 20px; }
   }
 </style>
 
@@ -804,6 +868,9 @@
       <li><a href="#kontakt" data-section="kontakt" data-en="04 / Contact">04 / Kontakt</a></li>
     </ul>
     <button class="lang-btn" id="lang-btn" onclick="toggleLang()">EN</button>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
@@ -948,7 +1015,7 @@
     <!-- Film 1 — Dymkowski -->
     <!-- Gdy film będzie na YouTube: dodaj onclick="openYT('dymkowski')" do divu poniżej -->
     <div class="film-card film-card--poster">
-      <img src="uploads/dymkowski-poster.JPG" alt="Dymkowski. Najważniejszy mecz — plakat" class="film-poster-img">
+      <img src="uploads/dymkowski-poster-web.jpg" alt="Dymkowski. Najważniejszy mecz — plakat" class="film-poster-img">
       <div class="film-card-overlay"></div>
     </div>
     <div class="film-card-info film-card-info--below">
@@ -1145,6 +1212,21 @@ function openYT(id) {
     alert('Film wkrótce dostępny na YouTube.');
   }
 }
+
+// ── HAMBURGER MENU ──
+const hamburger = document.getElementById('nav-hamburger');
+const navLinksList = document.querySelector('.nav-links');
+hamburger.addEventListener('click', () => {
+  const isOpen = hamburger.classList.toggle('open');
+  navLinksList.classList.toggle('open');
+  if (isOpen) nav.classList.remove('hidden');
+});
+navLinksList.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    navLinksList.classList.remove('open');
+  });
+});
 
 // ── TWEAKS ──
 window.addEventListener('message', e => {
