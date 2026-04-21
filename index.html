@@ -16,8 +16,8 @@
     --fg: #f5f1e8;
     --fg-dim: rgba(245,241,232,0.45);
     --fg-muted: rgba(245,241,232,0.22);
-    --accent: #d4a24c;
-    --accent-dim: rgba(212,162,76,0.18);
+    --accent: #be1724;
+    --accent-dim: rgba(190,23,36,0.18);
     --serif: 'Playfair Display', Georgia, serif;
     --sans: 'Inter Tight', Helvetica, sans-serif;
   }
@@ -96,6 +96,12 @@
   }
   .nav-links a:hover,
   .nav-links a.active { color: var(--accent); }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
 
   /* ── SECTION SHARED ── */
   section { position: relative; }
@@ -786,7 +792,7 @@
     .nav-links a { display: block; padding: 12px 20px; font-size: 11px; letter-spacing: 0.14em; }
 
     #hero { padding: 80px 20px 48px; }
-    .hero-badge { right: 20px; top: 80px; font-size: 9px; }
+    .hero-badge { display: none; }
     .hero-headline { font-size: clamp(40px, 11vw, 80px); margin-bottom: 32px; }
     .hero-sub { margin-bottom: 40px; font-size: 13px; }
     .hero-line { left: 20px; }
@@ -804,7 +810,9 @@
     .person-row .person-num,
     .person-row.reverse .person-num { order: 1; writing-mode: horizontal-tb; padding: 20px 20px 0; font-size: 40px; opacity: 0.15; }
     .person-row .person-photo,
-    .person-row.reverse .person-photo { order: 2; min-height: 240px; height: 240px; }
+    .person-row.reverse .person-photo { order: 2; height: auto; min-height: 0; aspect-ratio: 4/5; }
+    .person-row .person-photo img,
+    .person-row.reverse .person-photo img { object-position: center center; }
     .person-row .person-photo::after,
     .person-row.reverse .person-photo::after { background: linear-gradient(to top, var(--bg) 0%, transparent 60%); }
     .person-row .person-content,
@@ -836,9 +844,6 @@
     #kontakt { padding: 60px 16px; }
     footer { padding: 16px; }
 
-    .person-row .person-photo,
-    .person-row.reverse .person-photo { min-height: 200px; height: 200px; }
-
     .film-card-info { padding: 20px; }
   }
 </style>
@@ -867,10 +872,12 @@
       <li><a href="#realizacje" data-section="realizacje" data-en="03 / Our work">03 / Realizacje</a></li>
       <li><a href="#kontakt" data-section="kontakt" data-en="04 / Contact">04 / Kontakt</a></li>
     </ul>
-    <button class="lang-btn" id="lang-btn" onclick="toggleLang()">EN</button>
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-actions">
+      <button class="lang-btn" id="lang-btn" onclick="toggleLang()">EN</button>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -1100,7 +1107,7 @@
   <div class="tweaks-title">Tweaks</div>
   <div class="tweak-row">
     <label class="tweak-label">Akcent</label>
-    <input type="color" class="tweak-input" id="tweak-accent" value="#d4a24c">
+    <input type="color" class="tweak-input" id="tweak-accent" value="#be1724">
   </div>
   <div class="tweak-row">
     <label class="tweak-label">Typografia nagłówków</label>
@@ -1236,7 +1243,7 @@ window.addEventListener('message', e => {
 window.parent.postMessage({type: '__edit_mode_available'}, '*');
 
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "accent": "#d34a4a",
+  "accent": "#be1724",
   "font": "'Playfair Display', Georgia, serif",
   "grain": "0.032"
 }/*EDITMODE-END*/;
