@@ -16,8 +16,8 @@
     --fg: #f5f1e8;
     --fg-dim: rgba(245,241,232,0.45);
     --fg-muted: rgba(245,241,232,0.22);
-    --accent: #d4a24c;
-    --accent-dim: rgba(212,162,76,0.18);
+    --accent: #be1724;
+    --accent-dim: rgba(190,23,36,0.18);
     --serif: 'Playfair Display', Georgia, serif;
     --sans: 'Inter Tight', Helvetica, sans-serif;
   }
@@ -1107,7 +1107,7 @@
   <div class="tweaks-title">Tweaks</div>
   <div class="tweak-row">
     <label class="tweak-label">Akcent</label>
-    <input type="color" class="tweak-input" id="tweak-accent" value="#d4a24c">
+    <input type="color" class="tweak-input" id="tweak-accent" value="#be1724">
   </div>
   <div class="tweak-row">
     <label class="tweak-label">Typografia nagłówków</label>
@@ -1243,7 +1243,7 @@ window.addEventListener('message', e => {
 window.parent.postMessage({type: '__edit_mode_available'}, '*');
 
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "accent": "#d34a4a",
+  "accent": "#be1724",
   "font": "'Playfair Display', Georgia, serif",
   "grain": "0.032"
 }/*EDITMODE-END*/;
