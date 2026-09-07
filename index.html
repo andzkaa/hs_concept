@@ -723,6 +723,8 @@
     text-transform: uppercase;
     font-weight: 400;
   }
+  .footer-link { text-decoration: none; transition: color 0.2s; }
+  .footer-link:hover { color: var(--accent); }
 
   /* ── DRAW LINE ── */
   .draw-line {
@@ -1255,7 +1257,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-text" data-en="HS Concept &nbsp;·&nbsp; Est. 2000 &nbsp;·&nbsp; Szczecin, Poland &nbsp;·&nbsp; © 2026">HS Concept &nbsp;·&nbsp; Est. 2000 &nbsp;·&nbsp; Szczecin, Polska &nbsp;·&nbsp; © 2026</div>
-  <div class="footer-text" style="opacity:0" aria-hidden="true">·</div>
+  <a href="regulamin.html" class="footer-text footer-link" data-en="Contest rules">Regulamin konkursów</a>
 </footer>
 
 </div><!-- /.site-wrapper -->

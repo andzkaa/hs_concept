@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regulamin konkursów — HS Concept</title>
+<meta name="description" content="Ogólny regulamin konkursów organizowanych przez HS Concept, Szczecin.">
+<meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0a;
+    --fg: #f5f1e8;
+    --fg-dim: rgba(245,241,232,0.55);
+    --fg-muted: rgba(245,241,232,0.22);
+    --accent: #be1724;
+    --accent-dim: rgba(190,23,36,0.18);
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'Inter Tight', Helvetica, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── GRAIN ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.032;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    animation: grain 0.8s steps(2) infinite;
+  }
+  @keyframes grain {
+    0%,100% { transform: translate(0,0); }
+    25%      { transform: translate(-3px,2px); }
+    50%      { transform: translate(3px,-2px); }
+    75%      { transform: translate(-2px,-3px); }
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--fg-muted);
+  }
+  .nav-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 48px;
+  }
+  .nav-logo { display: flex; align-items: center; text-decoration: none; }
+  .nav-logo-img { height: 28px; width: auto; }
+  .nav-back {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    color: var(--fg-dim);
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--accent); }
+
+  /* ── PAGE ── */
+  .site-wrapper { max-width: 1300px; margin: 0 auto; }
+
+  .page-head {
+    padding: 180px 48px 80px;
+    border-bottom: 1px solid var(--fg-muted);
+  }
+  .page-label {
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .page-label::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+  }
+  .page-title {
+    font-family: var(--serif);
+    font-size: clamp(40px, 6vw, 84px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    max-width: 900px;
+  }
+  .page-title em { font-style: italic; color: var(--accent); }
+  .page-meta {
+    margin-top: 40px;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    color: var(--fg-dim);
+    font-weight: 300;
+    line-height: 1.8;
+    max-width: 560px;
+  }
+
+  /* ── LAYOUT ── */
+  .reg-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 80px;
+    padding: 80px 48px 140px;
+  }
+
+  /* TOC */
+  .reg-toc {
+    position: sticky;
+    top: 110px;
+    align-self: start;
+  }
+  .reg-toc-label {
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    color: var(--fg-muted);
+    text-transform: uppercase;
+    font-weight: 500;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--fg-muted);
+  }
+  .reg-toc ol { list-style: none; }
+  .reg-toc li { margin-bottom: 4px; }
+  .reg-toc a {
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    gap: 8px;
+    padding: 8px 0;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--fg-dim);
+    text-decoration: none;
+    line-height: 1.4;
+    transition: color 0.2s;
+  }
+  .reg-toc a span:first-child {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--fg-muted);
+    padding-top: 2px;
+  }
+  .reg-toc a:hover, .reg-toc a.active { color: var(--fg); }
+  .reg-toc a.active span:first-child, .reg-toc a:hover span:first-child { color: var(--accent); }
+
+  /* CONTENT */
+  .reg-content { max-width: 760px; }
+
+  .reg-section {
+    padding: 56px 0;
+    border-top: 1px solid var(--fg-muted);
+    scroll-margin-top: 100px;
+  }
+  .reg-section:first-child { border-top: 0; padding-top: 0; }
+
+  .reg-section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+  .reg-section-num {
+    font-family: var(--serif);
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .reg-section-title {
+    font-family: var(--serif);
+    font-size: clamp(24px, 2.6vw, 34px);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .reg-list {
+    list-style: none;
+    counter-reset: pkt;
+  }
+  .reg-list > li {
+    counter-increment: pkt;
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 16px;
+    padding: 14px 0;
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--fg-dim);
+    font-weight: 300;
+  }
+  .reg-list > li::before {
+    content: counter(pkt) ".";
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    font-weight: 500;
+    padding-top: 6px;
+    font-family: var(--sans);
+  }
+  .reg-list strong { color: var(--fg); font-weight: 500; }
+  .reg-list a { color: var(--fg); text-decoration: none; border-bottom: 1px solid var(--accent); transition: color 0.2s; }
+  .reg-list a:hover { color: var(--accent); }
+
+  /* sub-lists */
+  .reg-sub {
+    list-style: none;
+    margin-top: 12px;
+  }
+  .reg-sub > li {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 12px;
+    padding: 8px 0;
+  }
+  .reg-sub > li::before {
+    content: attr(data-n);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--fg-muted);
+    padding-top: 6px;
+  }
+  .reg-sub .reg-sub > li { grid-template-columns: 24px 1fr; padding: 6px 0; }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 28px 48px;
+    border-top: 1px solid var(--fg-muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-text {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--fg-muted);
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--fg-muted);
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover, .footer-links a.active { color: var(--accent); }
+
+  /* ── REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .reg-layout { grid-template-columns: 1fr; gap: 48px; }
+    .reg-toc { position: static; }
+    .reg-toc ol { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; }
+  }
+  @media (max-width: 768px) {
+    .nav-inner { padding: 14px 20px; }
+    .page-head { padding: 130px 20px 56px; }
+    .reg-layout { padding: 56px 20px 100px; }
+    .reg-toc ol { grid-template-columns: 1fr; }
+    .reg-section { padding: 40px 0; }
+    .reg-list > li { grid-template-columns: 28px 1fr; gap: 12px; font-size: 14px; }
+    .reg-sub > li { grid-template-columns: 32px 1fr; }
+    footer { padding: 20px; flex-direction: column; text-align: center; }
+  }
+  @media (max-width: 480px) {
+    .nav-inner { padding: 12px 16px; }
+    .nav-back span:last-child { display: none; }
+    .page-head { padding: 110px 16px 48px; }
+    .reg-layout { padding: 48px 16px 80px; }
+  }
+
+  @media print {
+    body::before, nav, .reg-toc, footer { display: none; }
+    body { background: #fff; color: #000; }
+    .page-head { padding: 0 0 24px; }
+    .reg-layout { display: block; padding: 0; }
+    .reg-list > li, .page-meta { color: #222; }
+  }
+</style>
+</head>
+<body>
+<div class="site-wrapper">
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="uploads/hs-concept-logo.png" alt="HS Concept" class="nav-logo-img">
+    </a>
+    <a href="index.html" class="nav-back"><span>←</span><span>Strona główna</span></a>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="page-label">Dokument</div>
+  <h1 class="page-title">Regulamin <em>konkursów</em></h1>
+  <p class="page-meta">
+    Ogólne zasady udziału w konkursach organizowanych przez HS Concept, odbioru nagród oraz postępowania reklamacyjnego. Szczegółowe warunki danego konkursu (terminy, zadanie, nagrody) publikowane są w jego ogłoszeniu.
+  </p>
+</header>
+
+<div class="reg-layout">
+
+  <aside class="reg-toc">
+    <div class="reg-toc-label">Spis treści</div>
+    <ol>
+      <li><a href="#p1" data-section="p1"><span>§1</span><span>Postanowienia ogólne</span></a></li>
+      <li><a href="#p2" data-section="p2"><span>§2</span><span>Warunki uczestnictwa</span></a></li>
+      <li><a href="#p3" data-section="p3"><span>§3</span><span>Dane osobowe</span></a></li>
+      <li><a href="#p4" data-section="p4"><span>§4</span><span>Oświadczenia i prawa autorskie</span></a></li>
+      <li><a href="#p5" data-section="p5"><span>§5</span><span>Ogólne zasady udziału</span></a></li>
+      <li><a href="#p6" data-section="p6"><span>§6</span><span>Nagrody i zaproszenia</span></a></li>
+      <li><a href="#p7" data-section="p7"><span>§7</span><span>Postępowanie reklamacyjne</span></a></li>
+      <li><a href="#p8" data-section="p8"><span>§8</span><span>Postanowienia końcowe</span></a></li>
+    </ol>
+  </aside>
+
+  <main class="reg-content">
+
+    <section class="reg-section reveal" id="p1">
+      <div class="reg-section-head">
+        <span class="reg-section-num">§ 1</span>
+        <h2 class="reg-section-title">Postanowienia ogólne</h2>
+      </div>
+      <ol class="reg-list">
+        <li>Organizatorem konkursów jest <strong>HS concept</strong> z siedzibą przy Alei Wojska Polskiego 40/U3 w Szczecinie, 70-475, zwany dalej „Organizatorem”.</li>
+        <li>Niniejszy regulamin (zwany dalej „Regulaminem”) określa ogólne zasady udziału w Konkursach prowadzonych przez HS concept, odbioru nagród oraz zasady postępowania reklamacyjnego.</li>
+        <li>Niniejszy Regulamin dostępny jest również w siedzibie w formie papierowej i na stronie Organizatora w formie elektronicznej pod adresem <a href="https://www.hsconcept.pl">www.hsconcept.pl</a>.</li>
+      </ol>
+    </section>
+
+    <section class="reg-section reveal" id="p2">
+      <div class="reg-section-head">
+        <span class="reg-section-num">§ 2</span>
+        <h2 class="reg-section-title">Warunki uczestnictwa w konkursach</h2>
+      </div>
+      <ol class="reg-list">
+        <li>Uczestnikami Konkursów (zwanymi dalej „Uczestnikiem”), prowadzonych przez HS concept mogą być pełnoletnie osoby fizyczne, posiadające pełną zdolność do czynności prawnych, bez względu na obywatelstwo, z wyjątkiem pracowników Organizatora oraz członków ich najbliższych rodzin, za jakich uważa się: wstępnych, zstępnych, rodzeństwo, małżonków i osoby pozostające w stosunku przysposobienia.</li>
+        <li>Osoby niepełnoletnie mogą brać udział w Konkursach jedynie za pisemną zgodą rodziców lub opiekuna prawnego.</li>
+        <li>W Konkursach organizowanych przez HS concept Uczestnik może brać udział wyłącznie osobiście, tj. niedopuszczalne jest dokonywanie zgłoszeń konkursowych w imieniu osób trzecich.</li>
+        <li>Niezależnie od spełnienia opisanych powyżej warunków Uczestnik obowiązany jest do podania przedstawicielowi Organizatora danych osobowych, o których mowa w § 3 niniejszego Regulaminu.</li>
+        <li>Udział w Konkursach i związane z nimi udostępnianie danych, o których mowa w § 3 niniejszego Regulaminu jest całkowicie dobrowolne.</li>
+        <li>Uczestnik przystępujący do Konkursów powinien zapoznać się z treścią niniejszego Regulaminu.</li>
+        <li>Uczestnik Konkursów zobowiązany jest do przestrzegania określonych w nim zasad, jak również potwierdzenia, iż spełnia wszystkie warunki, które uprawniają go do udziału w Konkursach.</li>
+      </ol>
+    </section>
+
+    <section class="reg-section reveal" id="p3">
+      <div class="reg-section-head">
+        <span class="reg-section-num">§ 3</span>
+        <h2 class="reg-section-title">Dane osobowe uczestnika konkursów</h2>
+      </div>
+      <ol class="reg-list">
+        <li>Warunkiem udziału w Konkursach jest podanie przez Uczestnika prawdziwych danych osobowych, tj.: imienia, nazwiska, adresu poczty elektronicznej, numeru telefonu kontaktowego.</li>
+        <li>Niezależnie od powyższego, jeżeli przemawia za tym określony charakter Konkursów organizowanych przez HS concept, Organizator może wiązać możliwość udziału Uczestnika w określonych Konkursach od przedstawienia przez niego innych danych osobowych np. fotografii itp.</li>
+        <li>Przystępując do Konkursów organizowanych przez HS concept i akceptując niniejszy Regulamin, Uczestnik wyraża zgodę na przetwarzanie podanych przez niego danych osobowych przez Organizatora Konkursów. Dane będą przetwarzane w celu przeprowadzenia Konkursów w związku z wydaniem nagrody, a następnie zostaną poddane anonimizacji.</li>
+      </ol>
+    </section>
+
+    <section class="reg-section reveal" id="p4">
+      <div class="reg-section-head">
+        <span class="reg-section-num">§ 4</span>
+        <h2 class="reg-section-title">Oświadczenia i prawa autorskie</h2>
+      </div>
+      <ol class="reg-list">
+        <li>
+          W wypadku, gdy udział w danym Konkursie wymaga od Uczestnika przesłania utworu w rozumieniu ustawy o prawie autorskim i prawach pokrewnych (np. zdjęcie, samodzielna wypowiedź, opis, wiersz, piosenka) – zwany dalej jako „Utwór” – wówczas przesłanie przez Uczestnika zgłoszenia konkursowego wraz z Utworem:
+          <ol class="reg-sub">
+            <li data-n="1.1">jest równoznaczne ze złożeniem przez Uczestnika oświadczenia, że jest on wyłącznym twórcą Utworu, posiada do niego całość praw autorskich i innych praw niezbędnych do jego zwielokrotniania, publikowania i rozpowszechniania (np. praw w zakresie korzystania z wizerunków osób uwidocznionych na zdjęciach) i ponosi z tego tytułu pełną odpowiedzialność, w szczególności wobec osób trzecich;</li>
+            <li data-n="1.2">
+              oznacza udzielenie Organizatorowi przenoszalnej, nieodpłatnej i niewyłącznej licencji na czas nieoznaczony, bez ograniczeń terytorialnych do korzystania z autorskich praw majątkowych do przesłanego Utworu na polach eksploatacji obejmujących:
+              <ol class="reg-sub">
+                <li data-n="a)">w zakresie utrwalania i zwielokrotniania Utworu – wytwarzanie określoną techniką jego egzemplarzy, w tym techniką drukarską, reprograficzną, zapisu magnetycznego oraz techniką cyfrową;</li>
+                <li data-n="b)">w zakresie obrotu oryginałem albo egzemplarzami, na których Utwór utrwalono – wprowadzanie do obrotu, użyczenie lub najem oryginału albo egzemplarzy;</li>
+                <li data-n="c)">w zakresie rozpowszechniania Utworu w sposób inny niż określony w pod lit. b) powyżej – publiczne wykonanie, wystawienie, wyświetlenie, odtworzenie oraz nadawanie i reemitowanie, a także publiczne jego udostępnianie w taki sposób, aby każdy mógł mieć do niego dostęp w miejscu i w czasie przez siebie wybranym (rozpowszechnianie w sieci Internet);</li>
+              </ol>
+            </li>
+            <li data-n="1.3">
+              oznacza udzielenie Organizatorowi zezwolenia na:
+              <ol class="reg-sub">
+                <li data-n="a)">dokonywanie przez Organizatora, bez potrzeby uzyskiwania dodatkowej zgody Uczestnika, opracowań Utworu, w szczególności poprzez dokonywanie jego zmian, skrótów oraz na korzystanie przez Organizatora opracowań wg uznania Organizatora,</li>
+                <li data-n="b)">wykonywanie zależnych praw autorskich, w tym w szczególności na zezwalanie na korzystanie z opracowań Utworu oraz rozporządzanie tymi opracowaniami według uznania Organizatora. Powyższe oznacza w szczególności, lecz nie wyłącznie, że Organizator może korzystać z przesłanego Utworu dla celów reklamowych, promocyjnych i marketingowych z wykorzystaniem wszelkich środków komunikacji (prasa, telewizja, radio, internet itp.)</li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+        <li>Po przesłaniu zgłoszenia konkursowego do Konkursów wymagających zgłoszenia w formie wiadomości e-mail zawierającej wypowiedź konkursową, Uczestnik nie może dokonywać w niej żadnych zmian.</li>
+        <li>Poprzez przesłanie zgłoszenia konkursowego w sposób określony w niniejszym paragrafie, Uczestnik oświadcza, że treść przesłanej przez niego wypowiedzi nie narusza przepisów prawa, ani prawem chronionych dóbr osób trzecich, a Uczestnik jest w pełni uprawniony do zgłoszenia wypowiedzi do Konkursów oraz udzielenia zezwolenia na jej publikację na stronie internetowej Organizatora.</li>
+      </ol>
+    </section>
+
+    <section class="reg-section reveal" id="p5">
+      <div class="reg-section-head">
+        <span class="reg-section-num">§ 5</span>
+        <h2 class="reg-section-title">Ogólne zasady udziału w konkursach</h2>
+      </div>
+      <ol class="reg-list">
+        <li>Uczestnik może brać udział we wszystkich Konkursach organizowanych przez HS concept, z tym zastrzeżeniem, iż w jednym konkursie może wziąć udział tylko jeden raz.</li>
+        <li>W przypadku wysłania kilku zgłoszeń do jednego Konkursu, w konkursie bierze udział tylko pierwsze prawidłowo złożone przez Uczestnika zgłoszenie.</li>
+        <li>Zgłoszenia do Konkursów, które będą niekompletne lub będą zawierać nieprawdziwe dane nie będą uwzględniane.</li>
+        <li>Zgłoszenia do Konkursów, w których odpowiedzi w szczególności są: wulgarne, naruszające przepisy prawa, dobre obyczaje, normy moralne, obrażające godność lub naruszające dobra osobiste innych osób, popierające radykalne postawy społeczne lub głoszące takie poglądy jak dyskryminacja rasowa, etniczna, ze względu na płeć, wyznanie i inne, nie będą uwzględniane.</li>
+        <li>Organizator nie ponosi odpowiedzialności za zgłoszenia, które dotarły za późno, bądź nie dotarły do niego w ogóle z przyczyn od niego niezależnych, np. wskutek awarii łączy internetowych.</li>
+        <li>Uczestnik biorący udział w Konkursach organizowanych przez HS concept w jednym Konkursie może zostać laureatem tylko jeden raz, a w przypadku Konkursów trwających dłużej niż jeden miesiąc nie częściej niż raz w miesiącu.</li>
+      </ol>
+    </section>
+
+    <section class="reg-section reveal" id="p6">
+      <div class="reg-section-head">
+        <span class="reg-section-num">§ 6</span>
+        <h2 class="reg-section-title">Nagrody i zaproszenia</h2>
+      </div>
+      <ol class="reg-list">
+        <li>Przewidziane w Konkursach nagrody i zaproszenia nie podlegają zamianie na jakąkolwiek inną nagrodę, w szczególności nie podlega zamianie na ekwiwalent pieniężny.</li>
+        <li>Zwycięzcy nagród i zaproszeń w Konkursach nie mogą przenieść prawa do nagrody i zaproszenia na osoby trzecie.</li>
+        <li>Nagrody w Konkursach, których wartość przekroczy 2 000 zł brutto zostanie wydana zwycięzcy po wpłaceniu przez niego należnego podatku od Nagrody w wysokości 10% jej wartości zgodnie z obowiązującymi przepisami prawa. Zwycięzca wpłaci podatek w ciągu 14 dni od momentu poinformowania o wygranej. O numerze rachunku bankowego, na który należy wpłacić należny podatek, zwycięzca zostanie poinformowany telefonicznie lub mailowo przez przedstawiciela Organizatora. Zwycięzca konkursu otrzyma PIT‑8AR.</li>
+        <li>Osoba, która uzyskała prawo do nagrody i/lub zaproszenia w Konkursie nie otrzymuje nagrody i/lub zaproszenia, jeżeli z przyczyn niezależnych od Organizatora nie uda się przedstawicielowi Organizatora skontaktować z tą osobą pod wskazanym adresem poczty email lub numerem telefonu w ciągu 2 dni od dnia ogłoszenia decyzji o przyznaniu nagrody i/lub zaproszenia, albo zrezygnuje z nagrody i/lub zaproszenia, albo odmawia zapłaty zryczałtowanego podatku od nagród, zgodnie z obowiązującymi przepisami prawa.</li>
+        <li>Nagrody i/lub zaproszenia będą wydawane w siedzibie Organizatora, pod adresem wskazanym § 1 pkt 1 Regulaminu za osobistym stawiennictwem Uczestnika – zdobywcy nagrody w terminie 7 dni od daty przekazania przez przedstawiciela Organizatora informacji o wygranej. Po upływie tego terminu nagroda i/lub zaproszenie nie przysługuje Uczestnikowi – zdobywcy nagrody i/lub zaproszenia.</li>
+        <li>Nagrody i/lub zaproszenia wydawane są w dni robocze od poniedziałku do piątku w godzinach 11:00 – 15:00. Wyjątkowo przedstawiciel Organizatora może wyrazić zgodę na odbiór nagrody i/lub zaproszenia w innym terminie, po uprzednim ustaleniu przez Uczestnika – zdobywcę nagrody i/lub zaproszenia z przedstawicielem Organizatora innego terminu ich odbioru. Ustalenie innego terminu odbioru nagrody i/lub zaproszenia niż wskazany w zdaniu pierwszym niniejszego punktu odbywa się telefonicznie pod numerem telefonu <a href="tel:+48914868849">+48 91 48 688 49</a>.</li>
+        <li>Odbiór nagród i/lub zaproszeń odbywa się za okazaniem dokumentu tożsamości w celu weryfikacji danych Uczestnika – zdobywcy nagrody i/lub zaproszenia. Wyjątkowo nagrodę i/lub zaproszenie za Uczestnika – zdobywcę nagrody i/lub zaproszenia może odebrać inna osoba pod warunkiem, iż posiada ona pisemne upoważnienie wraz z kserokopią dokumentu tożsamości Uczestnika – zdobywcy nagrody i/lub zaproszenia do ich odbioru.</li>
+        <li>Niespełnienie przez Uczestnika – zdobywcę nagrody i/lub zaproszenia w Konkursach organizowanych przez HS concept któregokolwiek z warunków określonych w niniejszym Regulaminie skutkować będzie odmową wydania nagrody przez Organizatora.</li>
+      </ol>
+    </section>
+
+    <section class="reg-section reveal" id="p7">
+      <div class="reg-section-head">
+        <span class="reg-section-num">§ 7</span>
+        <h2 class="reg-section-title">Postępowanie reklamacyjne</h2>
+      </div>
+      <ol class="reg-list">
+        <li>Reklamacje związane z Konkursami powinny być składane w formie pisemnej na adres wskazany w § 1 pkt 1 lub w formie elektronicznej na adres e-mail: <a href="mailto:biuro@hsconcept.pl">biuro@hsconcept.pl</a> z tematem wiadomości „Reklamacja – (nazwa danego konkursu)”.</li>
+        <li>Reklamacja powinna zawierać imię, nazwisko, dokładny adres osoby składającej reklamację, jak również dokładny opis i powód reklamacji.</li>
+        <li>O wyniku reklamacji Uczestnik zostanie poinformowany listem poleconym za potwierdzeniem odbioru (na adres podany w reklamacji), w ciągu 14 (słownie: czternastu) dni roboczych od daty otrzymania reklamacji przez Organizatora. W przypadku odmowy przyjęcia, bądź nieodebrania przesyłki przez osobę składającą, reklamację uznaje się za dostarczoną. W przypadku reklamacji w formie elektronicznej Uczestnik zostanie poinformowany o wyniku reklamacji poprzez wiadomość mailową, w ciągu 14 (słownie: czternastu) dni roboczych od daty otrzymania reklamacji.</li>
+        <li>Reklamacje będą rozpatrywane przez Organizatora.</li>
+        <li>Stanowisko Organizatora jest rozstrzygające we wszystkich kwestiach spornych związanych z Konkursami.</li>
+      </ol>
+    </section>
+
+    <section class="reg-section reveal" id="p8">
+      <div class="reg-section-head">
+        <span class="reg-section-num">§ 8</span>
+        <h2 class="reg-section-title">Postanowienia końcowe</h2>
+      </div>
+      <ol class="reg-list">
+        <li>Organizator jest uprawniony do zmiany postanowień niniejszego Regulaminu. Dotyczy to w szczególności zmian terminów poszczególnych czynności konkursowych oraz zmian specyfikacji nagród, o ile nie wpłynie to na pogorszenie warunków uczestnictwa w Konkursach. Zmieniony Regulamin obowiązuje od czasu opublikowania go na stronie internetowej Organizatora Konkursów lub na stronie wskazanej w ogłoszeniu danego konkursu, w którym Uczestnik bierze udział.</li>
+      </ol>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <div class="footer-text">HS Concept &nbsp;·&nbsp; Est. 2000 &nbsp;·&nbsp; © 2026</div>
+  <div class="footer-links">
+    <a href="index.html">Strona główna</a>
+    <a href="regulamin.html" class="active">Regulamin konkursów</a>
+  </div>
+</footer>
+
+</div>
+
+<script>
+// reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.05 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// active TOC
+const tocLinks = document.querySelectorAll('.reg-toc a');
+const ids = Array.from(tocLinks).map(a => a.dataset.section);
+window.addEventListener('scroll', () => {
+  let active = ids[0];
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top <= 140) active = id;
+  });
+  tocLinks.forEach(a => a.classList.toggle('active', a.dataset.section === active));
+}, { passive: true });
+</script>
+</body>
+</html>
